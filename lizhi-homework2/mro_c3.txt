@@ -1,0 +1,17 @@
+MRO顺序： E-C-D-B-A
+C3算法： L(E(C,D)) = E + merge(L(C), L(D), CD)
+				   = E + merge(CBA, DBA, CD)
+				   = E + C + merge(BA, DBA, D)
+				   = E + C + D + merge(BA, BA)
+				   = E + C + D + B + merge(A, A)
+				   = E + C + D + B + A
+
+单例模式的类，将作业转化为类的答案见文件work_class.py
+
+web开发流程（django）：
+图片见 文件夹picture\django.png
+浏览器发送请求request给服务器
+通过urlconf来确认请求,找到相应的view
+view收到request，通过model与数据库交互，获得数据，返回给response
+
+
