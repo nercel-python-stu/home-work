@@ -1,0 +1,14 @@
+类继承的执行顺序：
+E-->C-->D-->B-->A
+
+C3推导步骤：
+L(B) = L(B(A)) = B + merge(L(A)) = B + A = [BA]
+L(C) = L(C(B)) = C + merge(L(B)) = C + merge([BA]) = [CB] + merge([A]) = [CBA]
+L(D) = L(D(B)) = D + merge(L(B)) = D + merge([BA]) = [DB] + merge([A]) = [DBA]
+L(E) = L(E(C,D)) = E + merge(L(C), L(D), CD)
+     = E + merge(CBA, DBA, CD)    #C是第一个表的合法表头
+	 = E + C + merge(BA, DBA, D) #B不是合法表头,D是合法表头
+	 = E + C + D + merge(BA, BA)  #B是合法表头
+	 = E + C + D + B + merge(A, A)     #A是合法表头
+	 = E + C + D + B + A
+	 = [E,C,D,B,A]
